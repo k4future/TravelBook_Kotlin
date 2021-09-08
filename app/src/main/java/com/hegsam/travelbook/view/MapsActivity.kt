@@ -55,6 +55,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
         sharedPreferences = this.getSharedPreferences(packageName, MODE_PRIVATE)
         trackBoolean = false
         binding.saveButton.isEnabled = false
+        binding.deleteButton.isEnabled = false
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -131,6 +132,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
             mMap.clear()
             placeFromMain = intent.getSerializableExtra("selectedPlace") as Place
             placeFromMain?.let {
+                binding.deleteButton.isEnabled = true
                 val latlng = LatLng(it.latitude,it.longitude)
 
                 mMap.addMarker(MarkerOptions().position(latlng).title(it.name))
