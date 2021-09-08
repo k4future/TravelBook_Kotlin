@@ -86,9 +86,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
                         sharedPreferences.edit().putBoolean("trackBoolean", true).apply()
                     }
-                }
+
+            }
 
                 override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+                }
+
+                override fun onProviderDisabled(provider: String) {
+                }
+
+                override fun onProviderEnabled(provider: String) {
                 }
 
             }
